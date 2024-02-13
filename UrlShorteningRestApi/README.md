@@ -62,10 +62,15 @@ A Postman collection containing sample requests for the endpoints mentioned abov
      infrastructre.
      - Assumption: Current implementation have kept redis default configurations. In real usecase we can provide specific configurations such as setting the eviction policy 
      to least recently used.
+- **Aysnchrounous method call**
+     - To improve perfromance of redirect call, implemented async method which is responsible for updating the db with timestamp event to indicate that short url has       been accessed. The anync method call allows backend to respond to the client redirecting to long url and in the background it will update the timestamp for event      (These timestamps for events will be used to calculate the count of time short url has been accessed in past 24hrs)
+     - Benefits of aynchronous method call : Concurrency and parallelism, better performance, resource effiencey
+- **Index**
+     - Created an index on the shorUrl field to improve query performance
 - **Generating Unique Url each time**
      - Generating unique url using Murmur3 or SHA-256 algorithm. I have decided to use Murmur3
      - Appending current time to long Url to ensure each time a unique short url is generated even for duplicate long urls
 - **Scope for Improvement**
      - Logging, analytics and monitoring
-     - Scaling:  run multiple instances of application, sharding db, replica sets to be fault tolerant, redis clustering and replication, adding loadbalancers between 1. client and application servers, 2. Application servers and db servers and 3. Between application servers and cache servers
+     - Scaling:  run multiple instances of application, sharding db, replica sets to be fault tolerant, redis clustering and replication, adding loadbalancers between       1. client and application servers, 2. Application servers and db servers and 3. Between application servers and cache servers
      - mongoDB's aggregation framework to perform analytics such as getting the number of times short url has been accessed. 
