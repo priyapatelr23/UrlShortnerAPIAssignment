@@ -18,7 +18,7 @@ Solution supports the following operations:
 ## Setup
 1. Ensure Docker is installed.
 2. Clone this repository:
-   git clone https://github.com/priyapatelr23/UrlShorteningService.git
+   git clone https://github.com/priyapatelr23/UrlShortnerAPIAssignment.git
 3. cd to the project directory (cd /UrlShortnerAPIAssignment-main/UrlShorteningRestApi)
 4. Run Docker compose to setup and run the application.
    > docker-compose up -d
