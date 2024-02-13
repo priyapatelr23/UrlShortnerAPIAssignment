@@ -48,24 +48,24 @@ A Postman collection containing sample requests for the endpoints mentioned abov
 
 ## Design Details
  - **Database**
-      -NoSql Db (MongoDb)
-      -MongoDb supports sharding
-      -Non-relational data
-      -Flexible schema
-      -Easy to scale horizontolly
-      -There is no need for complex joins
+      - NoSql Db (MongoDb)
+      - MongoDb supports sharding
+      - Non-relational data
+      - Flexible schema
+      - Easy to scale horizontolly
+      - There is no need for complex joins
 - **Cache**
-     -Currently using spring in memory cache for simplicity but ideally would use redis cache as redis supports clustering and replication, which will allow to scale redis deployment horizontally to handle increased load and data volume
-     -Store frequently accessed shortUrl in redis cache along with its longUrl mapping, for fast redirect to avoid making a call to the db to retrive long url.    
+     - Currently using spring in memory cache for simplicity but ideally would use redis cache as redis supports clustering and replication, which will allow to scale redis deployment horizontally to handle increased load and data volume
+     - Store frequently accessed shortUrl in redis cache along with its longUrl mapping, for fast redirect to avoid making a call to the db to retrive long url.    
      This will reduce the latency.
-     -Caching also help reduce the load on db server during hight trafic or heavy load as we will not be repeatedly querying the db. This prevents overlaoding the backend    
+     - Caching also help reduce the load on db server during hight trafic or heavy load as we will not be repeatedly querying the db. This prevents overlaoding the backend    
      infrastructre.
-     -Assumption: Current implementation have kept redis default configurations. In real usecase we can provide specific configurations such as setting the eviction policy 
+     - Assumption: Current implementation have kept redis default configurations. In real usecase we can provide specific configurations such as setting the eviction policy 
      to least recently used.
 - **Generating Unique Url each time**
-     -Generating unique url using Murmur3 or SHA-256 algorithm. I have decided to use Murmur3
-     -Appending current time to long Url to ensure each time a unique short url is generated even for duplicate long urls
+     - Generating unique url using Murmur3 or SHA-256 algorithm. I have decided to use Murmur3
+     - Appending current time to long Url to ensure each time a unique short url is generated even for duplicate long urls
 - **Scope for Improvement**
-     -Logging, analytics and monitoring
-     -Scalling:  run multiple instances of application, sharding db, replica sets to be fault taulerant, redis clustering and replication, adding loadbalancers between 1. client and application servers, 2. Application servers and db servers and 3. Between application servers and cache servers
-     -mongoDB's aggregation framework to perform analytics such as getting the number of times short url has been accessed. 
+     - Logging, analytics and monitoring
+     - Scalling:  run multiple instances of application, sharding db, replica sets to be fault taulerant, redis clustering and replication, adding loadbalancers between 1. client and application servers, 2. Application servers and db servers and 3. Between application servers and cache servers
+     - mongoDB's aggregation framework to perform analytics such as getting the number of times short url has been accessed. 
