@@ -16,7 +16,7 @@ Solution supports the following operations:
 4. Persistence (data must survive computer restarts) 
 
 ## Setup
-1. Make sure you have Docker installed.
+1. Ensure Docker is installed.
 2. Clone this repository:
    git clone https://github.com/priyapatelr23/UrlShorteningService.git
 3. cd to the project directory (cd /UrlShortnerAPIAssignment-main/UrlShorteningRestApi)
