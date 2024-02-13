@@ -67,5 +67,5 @@ A Postman collection containing sample requests for the endpoints mentioned abov
      - Appending current time to long Url to ensure each time a unique short url is generated even for duplicate long urls
 - **Scope for Improvement**
      - Logging, analytics and monitoring
-     - Scalling:  run multiple instances of application, sharding db, replica sets to be fault taulerant, redis clustering and replication, adding loadbalancers between 1. client and application servers, 2. Application servers and db servers and 3. Between application servers and cache servers
+     - Scaling:  run multiple instances of application, sharding db, replica sets to be fault tolerant, redis clustering and replication, adding loadbalancers between 1. client and application servers, 2. Application servers and db servers and 3. Between application servers and cache servers
      - mongoDB's aggregation framework to perform analytics such as getting the number of times short url has been accessed. 
